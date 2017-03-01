@@ -1,0 +1,26 @@
+{
+  "name": "wxcj",
+  "version": "0.0.1",
+  "description": "这是一个微信抽奖活动",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wannenglu/wxcj.git"
+  },
+  "author": "alu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wannenglu/wxcj/issues"
+  },
+  "homepage": "https://github.com/wannenglu/wxcj#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.1.0"
+  },
+  "dependencies": {
+    "gulp-less": "^3.3.0"
+  }
+}

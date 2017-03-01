@@ -1,0 +1,195 @@
+@ft:100rem;
+@imgSrc:"../images";
+.bg(@url,@repeat,@x,@y){
+    background: url("@{imgSrc}/@{url}") @repeat @x @y;
+}
+.wh(@w,@h){
+    width: @w/@ft;
+    height: @h/@ft;
+}
+html{ font-size: 625%;}/* 640px的尺寸相当于100px */
+body,ul,li,div,input,span,i,dl,dt,dd{ margin: 0; padding: 0;}
+li{ list-style: none;}
+a{ text-decoration: none; color: #481001;}
+a:hover,a:visited{ color: #481001;}
+.clearfix{ *zoom:1;}
+.clearfix:after{ content: "."; height: 0; clear: both; visibility: hidden; display: block;}
+input,button{
+    cursor: pointer;
+    -webkit-appearance: none;/* 在ios中去除按钮有渐变 */
+}
+
+body{
+    font-size: 24/@ft;
+    font-family: "微软雅黑";
+    max-width: 640px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+.index_bg{
+    .bg("bg.jpg",repeat-y,0,0);
+    background-size: 100% auto;
+}
+.index_bottom_bg{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 224/@ft;
+    .bg("index_bottom_bg.jpg",no-repeat,0,0);
+    background-size: 100% auto;
+    font-size: 20/@ft;
+    text-align: center;
+    padding-top: 174/@ft;
+    box-sizing: border-box;
+    color: #fff;
+}
+.coffee{
+    .wh(142,157);
+    position: absolute;
+    left: 0;
+    top: 0;
+    .bg("1.png",no-repeat,0,0);
+    background-size: 100% 100%;
+}
+.fork{
+    .wh(161,305);
+    position: absolute;
+    right: 0;
+    top: 0;
+    .bg("2.png",no-repeat,0,0);
+    background-size: 100% 100%;
+}
+.redPacket{
+    .wh(212,260);
+    position: absolute;
+    left: 0;
+    top: 347/@ft;
+    .bg("3.png",no-repeat,0,0);
+    background-size: 100% 100%;
+}
+.pot{
+    .wh(584,569);
+    position: absolute;
+    right: 0;
+    top: 51/@ft;
+    .bg("4.png",no-repeat,0,0);
+    background-size: 100% 100%;
+}
+.index_btn{
+    position: absolute;
+    left: 50%;
+    bottom: 320/@ft;
+    margin-left: -210/@ft;
+    .wh(420,91);
+    background: #d97810;
+    border-radius: 10/@ft;
+    span{
+        display: block;
+        width: 100%;
+        height: 80/@ft;
+        border-radius: 10/@ft;
+        background: #fde135;
+        color: #481001;
+        font-size: 40/@ft;
+        line-height: 80/@ft;
+        text-align: center;
+    }
+}
+@media screen and (max-height: 480px){/* 响应式布局 */
+    .index_btn{ bottom: 240/@ft;}
+}
+@media screen and (min-height: 567px){
+    .index_btn{ bottom: 320/@ft;}
+}
+
+/* 抽奖 */
+.transition(@var){
+    transition: e(@var);
+    -webkit-transition: e(@var);
+    -moz-transition: e(@var);
+    -o-transition: e(@var);
+    -ms-transition: e(@var);
+}
+.luck_bg{
+    .bg("luck_bg.jpg",no-repeat,0,0);
+    background-color: #e4d6f4;
+    background-size: 100% auto;
+}
+.turntable{
+    position: relative;
+    .wh(517,517);
+    margin: 131/@ft auto 0;
+    
+    .pan{
+        display: block;
+        .wh(10000%,10000%);
+        .bg("turntable.png",no-repeat,0,0);
+        background-size: 100% 100%;
+        transform: rotate(15deg);
+    }
+    .turntable_btn{
+        position: absolute;
+        left: 202/@ft;
+        top: 192/@ft;
+        .wh(112,123);
+        .bg("turntable_btn.png",no-repeat,0,0);
+        background-size: 100% 100%;
+    }
+}
+.luck_code{
+    .wh(580,100);
+    box-sizing: border-box;
+    margin:36/@ft auto 0;
+    background: #fff;
+    border-radius: 5/@ft;
+    border: #e2e8e8 1px solid;
+    
+    dt{
+        float: left;
+        .wh(167,98);
+        line-height: 98/@ft;
+        box-sizing: border-box;
+        padding-left: 29/@ft;
+        font-size: 26/@ft;
+        color: #000;
+    }
+    dd{
+        float: left;
+        .wh(409,98);
+        input{
+            display: block;
+            .wh(10000%,10000%);
+            border: 0 none;
+            background: none;
+            font-size: 26/@ft;
+            color: #000;
+        }
+    }
+}
+
+.luck_btn{
+    display: block;
+    .wh(580,90);
+    margin: 20/@ft auto 0;
+    background: #ffb417;
+    text-align: center;
+    border-radius: 5/@ft;
+    font-size: 36/@ft;
+    color: #121212;
+    border: 0 none;
+}
+
+.luck_rule{
+    width: 580/@ft;
+    height: auto;
+    margin: 24/@ft auto 40/@ft;
+    dt{
+        color: #333;
+        line-height: 52/@ft;
+    }
+    dd{
+        color: #666;
+        line-height: 36/@ft;
+    }
+}

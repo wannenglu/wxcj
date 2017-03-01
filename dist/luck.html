@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>抽奖</title>
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+		
+		<script src="js/jquery.1.10.0.min.js"></script>
+		<script src="js/fontAuto.js"></script>
+		
+	</head>
+	<body class="luck_bg">
+		<div class="turntable">
+			<span class="pan"></span>
+			<span class="turntable_btn"></span>
+		</div>
+		
+		<dl class="luck_code clearfix">
+			<dt>输入暗号</dt>
+			<dd><input id="code" type="text" value="" placeholder="请输入今天的暗号" /></dd>
+		</dl>
+		
+		<input class="luck_btn" type="button" value="开始抽奖" />
+		
+		<dl class="luck_rule">
+			<dt>暗号抽奖规则：</dt>
+			<dd>1、每天10点在微信服务号“利趣返利网”或用户QQ群中公布当日抽奖暗号（节假日除外）</dd>
+			<dd>2、用户获得暗号后，可选择在微信服务号完成抽奖，或在PC端Q群抽奖中完成抽奖</dd>
+			<dd>3、每个用户凭暗号只获得1次抽奖机会</dd>
+			<dd>4、抽奖获得的集分宝将随着你的下次返利到账而发放</dd>
+			<dd>5、具体抽奖信息请至PC端我的利趣中查看抽奖明细</dd>
+		</dl>
+		
+		
+		<script src="js/jquery.rotate.min.js"></script>
+		<script>
+			
+			$(".luck_btn").click(function(){
+				zhuanpan();
+			});	
+			
+			function zhuanpan(){
+				var code = $("#code").val();
+				$.ajax({
+					type: "post",
+					url: "data.php",	//请求PHP地址//+ "?random=" + Math.random(),//+ "?rodem=" + Math.random() 加上这个主要为了避免缓存
+					data:{code:code},
+					dataType: "json",	 //数据类型为json
+					cache: false,	//缓存：false
+					success: function(json){	// 带入PHP返回的参数数组
+						var a = json.angle; // 定义角度 a = php数组.angle
+        				var p = json.prize; // 定义奖项文字 p = php数组.prize
+        				$(".turntable .pan").rotate({	// 执行
+        					duration: 3000,	//转动时间
+        					angle: 0,	// 起始角度
+            				animateTo: 1800+a,	// 转动角度+a（为保证随机数a过小，转动立刻停止，将1800为基本转动角度）
+            				callback: function(){	// 最后alert返回给用户信息
+                    			var con = confirm('恭喜你，中得'+p+'\n还要再来一次吗？');
+                    			if(con){ 
+                        			zhuanpan();
+                    			}else{ 
+                        			return false;
+                    			} 
+                			} 
+        				});
+        				
+					},
+					error: function(){	//请求失败执行函数
+						alert("服务忙，请稍候再试");
+						return false;
+					}
+				});
+			}
+		</script>
+		
+	</body>
+</html>
